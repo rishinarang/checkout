@@ -1,16 +1,15 @@
-# Welcome to Checkout Test Review!
+# Welcome to Checkout Test Review! 😀
 
-Hi! Please look at the following steps to run this exercise.
+Hi! 👋 Please look at the following steps to run this exercise.
 - Clone/Download GIT repository.
 - Navigate to checkout folder.
 - Run `npm install` (Node version 18 and above)
-- Run `npm start`
-- This should open browser at http://localhost:3000/
+- Run `npm start`. This should open browser at http://localhost:3000/
 - Run `npm run test` to see unit tests
 - Run `npm test -- --coverage` for coverage report
 
 ## Libraries used for development
-- React
+- React with TS
 - Formik for forms
 - Yup for form validation
 - D3.js for plotting chart
@@ -22,148 +21,79 @@ Hi! Please look at the following steps to run this exercise.
 - `useFetchUser` hook loads json with delay of 1 second.
 - `src/components` folder contains all the components used within app.
 - `src/components/Application.tsx` is the main entry point.
-- `lib` folder contains common logic used across app. for managing state. Please read State Management section for more details.
+- `lib` folder contains common logic used across app. for managing state. Please read ***State Management*** section for more details.
 
-## Features Implemented
+## Current Features 🤗
 - Current application has 2 routes, ***Home*** and ***Comments***.
-- Sate management using  `useReducer` and easy to replace current logic with libs like Redux from scalability point of view. Please read State Management section for more details.
+- Sate management using  `useReducer` and easy to replace current logic with libs like Redux from scalability point of view. Please read ***State Management*** section for more details.
+- Scalable to add further screens.
+- Improved performance by splitting ***Context*** in 2 parts to prevent unnecessary updation of child components. This avoids use of over memorization, which can further slow down the application. Please read ***Performance*** section for more details.
 - Lazy loading of D3 charts.
 - Responsive for various screen sizes using Tailwind.
-- Accessibility test using `jest-axe` to quickly find any violation of a11y rules.
+- Accessibility test using `jest-axe` to quickly find any violation of a11y rules at high level.
 - Use of skeleton components to improve CLS scores.
 - Reusable form validation logic. 
-
-## Create files and folders
-
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
-
-## Switch to another file
-
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
-
-## Rename a file
-
-You can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.
-
-## Delete a file
-
-You can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.
-
-## Export a file
-
-You can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.
+- Unit test for Form component and Comments section.
 
 
-# Synchronization
+## Missing ☹️ Features if given more time 
+- Keyboard navigable application from a11y point of view.
+- Add E2E tests using Cypress
+- Add more tests related to form submission and reducers.
+- Improve code coverage to at least 90%. Please read ***Testing*** section for more details.
+- Use of library like Tanstack query/middlewares for data fetching. for more details please read ***State Management*** section for more details.
+- Framework agnostic file structure. Please read ***Developing framework agnostic mindset*** section for more details.
+- React profiler reports.
 
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
+## State Management
+When we talk about state management at application level, we have plenty of options available (Redux, MobX, UseReducer/Context (to remain in React world), Jotai, XState, Apollo Client etc.)
 
-There are two types of synchronization and they can complement each other:
+If we look at the architecture of state management, we are left with only 2 options.
 
-- The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.
-	> To start syncing your workspace, just sign in with Google in the menu.
+1) Immutable State Trees.
+2) Dependency Graph.
 
-- The file synchronization will keep one file of the workspace synced with one or multiple files in **Google Drive**, **Dropbox** or **GitHub**.
-	> Before starting to sync files, you must link an account in the **Synchronize** sub-menu.
+So, any library we choose, it falls in only one of the category and the golden rule is to decide the statement architecture first and then choose the library.
 
-## Open a file
-
-You can open a file from **Google Drive**, **Dropbox** or **GitHub** by opening the **Synchronize** sub-menu and clicking **Open from**. Once opened in the workspace, any modification in the file will be automatically synced.
-
-## Save a file
-
-You can save any file of the workspace to **Google Drive**, **Dropbox** or **GitHub** by opening the **Synchronize** sub-menu and clicking **Save on**. Even if a file in the workspace is already synced, you can save it to another location. StackEdit can sync one file with multiple locations and accounts.
-
-## Synchronize a file
-
-Once your file is linked to a synchronized location, StackEdit will periodically synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be resolved.
-
-If you just have modified your file and you want to force syncing, click the **Synchronize now** button in the navigation bar.
-
-> **Note:** The **Synchronize now** button is disabled if you have no file to synchronize.
-
-## Manage file synchronization
-
-Since one file can be synced with multiple locations, you can list and manage synchronized locations by clicking **File synchronization** in the **Synchronize** sub-menu. This allows you to list and remove synchronized locations that are linked to your file.
-
-
-# Publication
-
-Publishing in StackEdit makes it simple for you to publish online your files. Once you're happy with a file, you can publish it to different hosting platforms like **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **WordPress** and **Zendesk**. With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
-
-> Before starting to publish, you must link an account in the **Publish** sub-menu.
-
-## Publish a File
-
-You can publish your file by opening the **Publish** sub-menu and by clicking **Publish to**. For some locations, you can choose between the following formats:
-
-- Markdown: publish the Markdown text on a website that can interpret it (**GitHub** for instance),
-- HTML: publish the file converted to HTML via a Handlebars template (on a blog for example).
-
-## Update a publication
-
-After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the **Publish now** button in the navigation bar.
-
-> **Note:** The **Publish now** button is disabled if your file has not been published yet.
-
-## Manage file publication
-
-Since one file can be published to multiple locations, you can list and manage publish locations by clicking **File publication** in the **Publish** sub-menu. This allows you to list and remove publication locations that are linked to your file.
-
-
-# Markdown extensions
-
-StackEdit extends the standard Markdown syntax by adding extra **Markdown extensions**, providing you with some nice features.
-
-> **ProTip:** You can disable any **Markdown extension** in the **File properties** dialog.
-
-
-## SmartyPants
-
-SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
-
-|                |ASCII                          |HTML                         |
+|                |Immutable State Trees                         |Dependency Graph                        |
 |----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+|Redux|`YES`            |`NO`            |
+|MOBx         |`NO`            |`YES`            |
+|React UseReducer          |`YES`|`NO`|
+|React Context          |`NO`|`YES`|
+|Jotai          |`NO`|`YES`|
+|Apollo Client          |`NO`|`YES`|
+|XState          |`NO`|`YES`|
+|TanStack Query          |`NO`|`YES`|
+
+In current application, I have chosen Immutable State Trees option. I have used useReducer hook to manage state which can be replaced by Redux easily by just modifying the `user-reducer.ts` file.
+
+If given more time, I would like go for state management with Dependency Graph because I don't see any use case to store stringify application state on server (unless there is requirement to store read/unread comments state when user logs off)
 
 
-## KaTeX
+Although I have seen people moving away from Redux to TanStack Query due to large configuration issues with Redux. Seems like Immutable State Trees are no longer required in many use cases. 
 
-You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
+## Testing
+In general testing is done at three levels, unit, integration and e2e tests. In current application I have used RTL to write test cases. RTL is more opinionated towards integration testing. Please make sure NEVER target for 100% code coverage because it will lead to over mocking of data and it's a trap to produce false +ve results. Code coverage around 85% to 90% is good for any application.
 
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
-
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
-
-
-## UML diagrams
-
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
-
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
-```
-
-And this will produce a flow chart:
+## Developing framework agnostic mindset
+JS frameworks are changing much faster than we change our clothes. Under such circumstances it becomes important to develop mindset that's independent of any framework/lib. 
+Below diagram demonstrate this concept.
 
 ```mermaid
 graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
+A[Gateway HTTP-GraphQL]  --> B((Repository VM like Redux/Mobx))
+
+B --> D{Presenter React/Angular/VUE}
+
 ```
+In this exercise, I will like to create gateway folder that will make call to comments API using fetch/tanstack query. Then in repository folder, I will create Reducer like functionality which serve as VM. This will contain all the business logic on the data fetched from HTTP . In presenter folder, I will create components that are independent of any business logic. This requires lot of time initially, but as the application scales up, it will easy to add more components i.e. React components can be replaced with VUE components, without much effort.
+
+Word of caution, libraries like apollo client forces developer to write business logic within React components, but still by using custom hooks we can separate repositories from presenter. 
+
+## Performance
+In current application, I have handled performance related issues by code splitting and separating context in 2 parts, one for `state` and other for `dispatch` so that if child components who need only state are not impacted when `dispatch` is fired and vice-versa. Further I can wrap child components with `React.memo` for further optimization. The problem with memoisation is, if not used wisely can drop the performance becuse in JS memoisation happens through closures and closures are never garbage collected. So it's better to profile application before jumping in memoization.
+
+### Please feel free to write any comment.
+
+
