@@ -42,9 +42,9 @@ test('it should display comments and chart of users', async () => {
     </AppStateContext.Provider>,
   );
 
-  screen.getByText(/Reviews/);
-  screen.getByText(/Ratings/);
-  screen.getByText(/Latest Comments/);
+  expect(screen.getByText(/Reviews/)).toBeInTheDocument();
+  expect(screen.getByText(/Ratings/)).toBeInTheDocument();
+  expect(screen.getByText(/Latest Comments/)).toBeInTheDocument();
 
   let comments = screen.getAllByTestId('comment');
   expect(comments.length).toBe(users.length);
